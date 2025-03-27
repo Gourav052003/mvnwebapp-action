@@ -9,10 +9,7 @@
 name: Java CI with Maven
 
 on:
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+
   workflow_dispatch:
 
 jobs:
@@ -30,9 +27,4 @@ jobs:
         cache: maven
     - name: Build with Maven
       run: mvn -B package --file pom.xml
-    - name: Check if curl is present
-      run: curl --help
-      shell: cmd
-    - name: Deploying war file to Tomcat Server
-      run: curl --upload-file target\mvnwebapp.war "http://deployer:deployer@nl2cm6khte9p.share.zrok.io/manager/text/deploy?path=/byactions&update=true"
-      shell: cmd
+
